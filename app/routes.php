@@ -99,18 +99,20 @@ return function (SlimApp $app) {
         $this->get('/getPcClient',              App\Controllers\UserController::class . ':getPcClient');
 
         //Reconstructed Payment System
-        $this->post('/payment/purchase/{type}',        App\Services\Payment::class . ':purchase');
-        $this->get('/payment/purchase/{type}',         App\Services\Payment::class . ':purchase');
-        $this->get('/payment/return/{type}',           App\Services\Payment::class . ':returnHTML');
+        $this->post('/payment/purchase/{type}', App\Services\Payment::class . ':purchase');
+        $this->get('/payment/purchase/{type}',  App\Services\Payment::class . ':purchase');
+        $this->get('/payment/return/{type}',    App\Services\Payment::class . ':returnHTML');
 
         $this->post('/doiam',                   App\Services\Payment::class . ':purchase');
 
+        // WireGuard
+        $this->get('/wireguard',                App\Controllers\WireGuardController::class . ':index');
     })->add(new Auth());
 
     $app->group('/payment', function () {
         $this->get('/notify/{type}',           App\Services\Payment::class . ':notify');
-        $this->post('/notify/{type}',   App\Services\Payment::class . ':notify');
-        $this->post('/status',          App\Services\Payment::class . ':getStatus');
+        $this->post('/notify/{type}',          App\Services\Payment::class . ':notify');
+        $this->post('/status',                 App\Services\Payment::class . ':getStatus');
         // $this->post('/coinpay/notify',  App\Services\CoinPayment::class. ':notify');
     });
 

@@ -372,6 +372,9 @@ $_ENV['cloudflare_email']       = '';            //Cloudflare 邮箱地址
 $_ENV['cloudflare_key']         = '';            //Cloudflare API Key
 $_ENV['cloudflare_name']        = '';            //域名
 
+# WireGuard
+$_ENV['wireguard_prefix'] = 'fe00:';
+
 #是否夹带统计代码，自己在 resources/views/{主题名} 下创建一个 analytics.tpl ，如果有必要就用 literal 界定符
 $_ENV['enable_analytics_code']  = false;
 
