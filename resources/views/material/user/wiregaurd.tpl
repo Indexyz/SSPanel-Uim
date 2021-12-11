@@ -1,5 +1,5 @@
 {include file='user/main.tpl'}
-
+<script src="/assets/js/wireguard.min.js"></script>
 
 <div class="fbtn-container">
     <div class="fbtn-inner">
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-footer">
                 <p class="text-right">
-                    <button class="btn btn-flat btn-brand waves-attach" id="createDeviceSubmit" type="button">确定</button>
+                    <button class="btn btn-flat btn-brand waves-attach" data-dismiss="modal" id="createDeviceSubmit" type="button">确定</button>
                 </p>
             </div>
         </div>
@@ -33,6 +33,16 @@
 <script>
     $("#createDevice").click(function () {
          $("#createDeviceModel").modal();
+    })
+
+    $("#createDeviceSubmit").click(function() {
+        console.log('hello')
+        // TODO: create wireguard key and submit device
+        $("#result").modal();
+
+        var keypair = window.wireguard.generateKeypair();
+
+        $$.getElementById('msg').innerHTML = '正在提交, 您的 PrivateKey 为 <br><code>' + keypair.privateKey + '</code>';
     })
 </script>
 
